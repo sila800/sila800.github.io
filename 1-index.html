@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فيديوهات ذكاء اصطناعي لصنّاع المحتوى</title>
+<meta name="description" content="قصص وفيديوهات قصيرة بالذكاء الاصطناعي، جاهزة للنشر: سيناريو، مشاهد، مونتاج، راوي وترجمة، كلها في خدمة واحدة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#f6f0ea; --ink:#251f21; --ink2:#5b5456; --teal:#4f8f7d; --teal-dark:#3a6e5f;
+    --card:#ffffff; --hair:#e9e4e0; --accent:#e07856;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Cairo', 'Segoe UI', Tahoma, sans-serif; color:var(--ink); line-height:1.9;
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(79,143,125,.18), transparent 60%),
+      radial-gradient(700px 420px at 8% 12%, rgba(224,120,86,.14), transparent 60%),
+      radial-gradient(800px 600px at 50% 110%, rgba(79,143,125,.12), transparent 60%),
+      var(--sand);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 20px;}
+  section{padding:34px 0;}
+  /* hero */
+  .hero{padding-top:56px; text-align:center;}
+  .badge{display:inline-block; background:rgba(79,143,125,.12); color:var(--teal-dark);
+    font-weight:700; font-size:14px; padding:6px 18px; border-radius:999px; margin-bottom:18px;}
+  h1{font-size:clamp(28px,5vw,44px); font-weight:800; line-height:1.5;}
+  .hero p{color:var(--ink2); max-width:640px; margin:14px auto 22px; font-size:17px;}
+  .cta{display:inline-block; background:var(--teal); color:#fff; font-weight:700; font-size:17px;
+    padding:12px 34px; border-radius:12px; text-decoration:none; transition:background .2s;}
+  .cta:hover{background:var(--teal-dark);}
+  .hero img{width:100%; max-width:760px; border-radius:24px; margin-top:34px;
+    box-shadow:0 24px 60px rgba(37,31,33,.18); display:block; margin-inline:auto;}
+  .img-note{font-size:13px; color:var(--ink2); margin-top:10px;}
+  /* section heads */
+  .sec-head{text-align:center; margin-bottom:26px;}
+  .sec-head .kicker{color:var(--teal); font-weight:700; font-size:14px;}
+  .sec-head h2{font-size:clamp(22px,3.5vw,30px); font-weight:800;}
+  /* cards */
+  .grid{display:grid; gap:16px;}
+  .grid.cols3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .grid.cols2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+  .card{background:var(--card); border:1px solid var(--hair); border-radius:18px; padding:22px;
+    box-shadow:0 6px 24px rgba(37,31,33,.06);}
+  .num{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    border-radius:50%; background:rgba(79,143,125,.14); color:var(--teal-dark); font-weight:800; margin-bottom:10px;}
+  .card h3{font-size:18px; font-weight:800; margin-bottom:6px;}
+  .card p{color:var(--ink2); font-size:15px;}
+  /* videos */
+  .videos{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px;}
+  .vcard{background:var(--card); border:1px solid var(--hair); border-radius:18px; overflow:hidden;
+    box-shadow:0 6px 24px rgba(37,31,33,.06); display:flex; flex-direction:column;}
+  .vcard video{width:100%; aspect-ratio:9/16; object-fit:cover; background:#0f0d0e; display:block;}
+  .vcard .vlabel{padding:12px 16px;}
+  .vcard .vlabel b{display:block; font-size:16px;}
+  .vcard .vlabel span{color:var(--ink2); font-size:13px;}
+  /* checklist */
+  .ticks{list-style:none;}
+  .ticks li{background:var(--card); border:1px solid var(--hair); border-radius:12px;
+    padding:12px 18px; margin-bottom:10px; font-size:15px; box-shadow:0 3px 12px rgba(37,31,33,.04);}
+  .ticks li::before{content:'✓'; color:var(--teal); font-weight:800; margin-inline-end:10px;}
+  /* steps */
+  .steps{counter-reset:step; list-style:none;}
+  .steps li{position:relative; background:var(--card); border:1px solid var(--hair); border-radius:12px;
+    padding:14px 18px 14px 18px; margin-bottom:10px; font-size:15px; padding-inline-start:58px;
+    box-shadow:0 3px 12px rgba(37,31,33,.04);}
+  .steps li::before{counter-increment:step; content:counter(step);
+    position:absolute; inset-inline-start:16px; top:50%; transform:translateY(-50%);
+    width:30px; height:30px; border-radius:50%; background:var(--teal); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;}
+  /* price note + contact */
+  .note{background:rgba(224,120,86,.10); border:1px solid rgba(224,120,86,.25); border-radius:14px;
+    padding:16px 20px; font-size:15px; margin-top:16px;}
+  .contact{text-align:center;}
+  .contact .card{max-width:640px; margin:0 auto;}
+  footer{text-align:center; color:var(--ink2); font-size:13px; padding:26px 0 40px;}
+</style>
+</head>
+<body>
+
+<section class="hero wrap">
+  <div class="badge">٦ أنواع محتوى في خدمة واحدة</div>
+  <h1>فيديوهات ذكاء اصطناعي لصنّاع المحتوى</h1>
+  <p>قصص وفيديوهات قصيرة بالذكاء الاصطناعي، جاهزة للنشر على فيسبوك وريلز وتيك توك: سيناريو، مشاهد، مونتاج، راوي وترجمة، كلها في خدمة واحدة.</p>
+  <a class="cta" href="#contact">اطلب الفيديو بتاعك</a>
+  <img src="hero.jpg" alt="رسم توضيحي لموبايل بيخرج منه شريط فيديو فيه مشاهد مختلفة">
+  <div class="img-note">صورة توضيحية مولّدة بالذكاء الاصطناعي.</div>
+</section>
+
+<section class="wrap" id="types">
+  <div class="sec-head">
+    <div class="kicker">الخدمة</div>
+    <h2>أنواع المحتوى اللي بتنفّذ</h2>
+  </div>
+  <div class="grid cols3">
+    <div class="card"><span class="num">1</span><h3>قصص تاريخية وتعليمية</h3><p>شرح مبسّط بشكل سينمائي يخلّي المعلومة توصل وتتفرّج، زي فيديو عن أرخميدس.</p></div>
+    <div class="card"><span class="num">2</span><h3>رعب وتشويق</h3><p>قصص قصيرة بأجواء مشوّقة ونهايات تشدّ المتابع للجزء اللي بعده.</p></div>
+    <div class="card"><span class="num">3</span><h3>دراما واقعية مصرية</h3><p>مسلسلات ريلز بمشاهد وشخصيات واقعية وراوي بالعربي، على شكل أجزاء.</p></div>
+    <div class="card"><span class="num">4</span><h3>قصص أطفال</h3><p>شخصيات كرتونية أصلية ولطيفة، وقصة قصيرة بقيمة تربوية واضحة.</p></div>
+    <div class="card"><span class="num">5</span><h3>إعلانات منتجات</h3><p>فيديو إعلاني قصير يعرّض المنتج بشكل جذاب ويشجّع على الشراء.</p></div>
+    <div class="card"><span class="num">6</span><h3>قصص دينية وقيم</h3><p>حكايات بأسلوب ثلاثي الأبعاد محترم، مناسبة لصفحات المحتوى الهادف.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="samples">
+  <div class="sec-head">
+    <div class="kicker">الشغل</div>
+    <h2>نماذج من الفيديوهات</h2>
+  </div>
+  <div class="videos">
+    <div class="vcard">
+      <video controls preload="none" poster="poster-archimedes.jpg" src="video-archimedes.mp4"></video>
+      <div class="vlabel"><b>أرخميدس</b><span>تاريخي وتعليمي، بالإنجليزي</span></div>
+    </div>
+    <div class="vcard">
+      <video controls preload="none" poster="poster-knocking.jpg" src="video-knocking.mp4"></video>
+      <div class="vlabel"><b>Knocking</b><span>رعب وتشويق</span></div>
+    </div>
+    <div class="vcard">
+      <video controls preload="none" poster="poster-sirr.jpg" src="video-sirr.mp4"></video>
+      <div class="vlabel"><b>سر البيت القديم — الجزء الأول</b><span>دراما واقعية مصرية</span></div>
+    </div>
+    <div class="vcard">
+      <video controls preload="none" poster="poster-zozo.jpg" src="video-zozo.mp4"></video>
+      <div class="vlabel"><b>زوزو والبطيخة</b><span>قصة أطفال</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="included">
+  <div class="sec-head">
+    <div class="kicker">التسليم</div>
+    <h2>كل فيديو بيوصلك فيه إيه</h2>
+  </div>
+  <ul class="ticks">
+    <li>سيناريو مكتوب ومقسّم مشاهد</li>
+    <li>شخصيات وأسلوب ثابتين من أول مشهد لآخره</li>
+    <li>مونتاج كامل مع راوي صوتي بالعامية المصرية أو الفصحى</li>
+    <li>ترجمة واضحة وأسماء الشخصيات على الشاشة</li>
+    <li>عنوان وكابشن وهاشتاجات جاهزة للنشر</li>
+  </ul>
+</section>
+
+<section class="wrap" id="packages">
+  <div class="sec-head">
+    <div class="kicker">الأسعار</div>
+    <h2>الباقات</h2>
+  </div>
+  <div class="grid cols3">
+    <div class="card"><span class="num">1</span><h3>ريل واحد</h3><p>فيديو قصير حتى دقيقة تقريباً، من الفكرة لحد النسخة النهائية الجاهزة للنشر.</p></div>
+    <div class="card"><span class="num">2</span><h3>سلسلة قصصية</h3><p>عدة أجزاء بنفس الشخصيات والأسلوب، مناسبة للحكايات والدراما.</p></div>
+    <div class="card"><span class="num">3</span><h3>باكدج شهرية</h3><p>فيديوهات على مدار الشهر بجدول ثابت، مع اقتراح أفكار محتوى جديدة.</p></div>
+  </div>
+  <div class="note"><b>السعر بالاتفاق:</b> مفيش سعر ثابت قبل التفاصيل؛ السعر بيتحدد على حسب طول الفيديو وعدد المشاهد وطريقة التنفيذ، وبنتفق عليه قبل ما نبدأ أي شغل.</div>
+</section>
+
+<section class="wrap" id="steps">
+  <div class="sec-head">
+    <div class="kicker">الخطوات</div>
+    <h2>الطلب بيمشي إزاي</h2>
+  </div>
+  <ol class="steps">
+    <li>تبعت الفكرة أو مثال لمحتوى عاجبك، ونحدد النوع والطول.</li>
+    <li>بكتب السيناريو وأجهّز شكل الشخصيات والمشاهد بأسلوب ثابت.</li>
+    <li>بولّد المشاهد وأعمل المونتاج الكامل: راوي صوتي، ترجمة، موسيقى وعنوان.</li>
+    <li>بتراجع الفيديو وتطلب أي تعديل قبل التسليم.</li>
+    <li>بتوصلك النسخة النهائية جاهزة للنشر، مع كابشن وهاشتاجات.</li>
+  </ol>
+</section>
+
+<section class="wrap contact" id="contact">
+  <div class="sec-head">
+    <div class="kicker">الطلب</div>
+    <h2>عايز فيديو؟</h2>
+  </div>
+  <div class="card">
+    <p>ابعت الفكرة أو مثال للمحتوى اللي عاجبك على نفس المحادثة اللي وصلك منها اللينك، وهيجيلك رد بالتفاصيل والسعر ومدة التنفيذ.</p>
+    <div class="note" style="text-align:start">الفيديوهات بتتوصلك جاهزة للنشر، ومعاها تنبيه في الحالات اللي المنصة بتطلب فيها علامة «محتوى ذكاء اصطناعي»، زي فيسبوك مع الفيديوهات الواقعية.</div>
+  </div>
+</section>
+
+<footer>آخر تحديث ٢٧ نوفمبر ٢٠٢٦ — كل الفيديوهات المعروضة نماذج أعمال فعلية.</footer>
+
+</body>
+</html>
