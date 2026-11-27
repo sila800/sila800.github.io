@@ -24,10 +24,15 @@
     background-attachment:fixed;
     position:relative;
   }
+  .bgmedia{position:fixed; inset:-7%; z-index:-3; background:url('bg.jpg') center/cover no-repeat;
+    animation:bgpan 16s ease-in-out infinite alternate;}
+  @keyframes bgpan{from{transform:translate3d(-2%,-1.2%,0) scale(1.06);} to{transform:translate3d(2%,1.2%,0) scale(1.14);}}
+  @media (max-width:640px){.bgmedia{background-image:url('bg-mobile.jpg');}}
+  @media (prefers-reduced-motion: reduce){.bgmedia{animation:none;}}
   .bgvid{position:fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;}
   body::before{
     content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:rgba(247,244,239,.30);
+    background:rgba(247,244,239,.15);
   }
   .wrap{max-width:960px; margin:0 auto; padding:0 22px;}
   section{padding:40px 0;}
@@ -89,7 +94,8 @@
 </style>
 </head>
 <body>
-<video class="bgvid" autoplay muted loop playsinline poster="bg.jpg" aria-hidden="true"><source src="bg.mp4" type="video/mp4"></video>
+<div class="bgmedia" aria-hidden="true"></div>
+<video class="bgvid" autoplay muted loop playsinline poster="bg.jpg" aria-hidden="true"><source src="bg-mobile.mp4" type="video/mp4" media="(max-width:640px)"><source src="bg.mp4" type="video/mp4"></video>
 
 <section class="hero wrap">
   <div class="badge">٥ أنواع محتوى في خدمة واحدة</div>
@@ -210,5 +216,19 @@
 
 <footer>آخر تحديث ٢٧ نوفمبر ٢٠٢٦ — كل الفيديوهات المعروضة نماذج أعمال فعلية.</footer>
 
+
+<script>
+(function(){
+  var v=document.querySelector('.bgvid'); if(!v) return;
+  v.muted=true;
+  function kick(){ var p=v.play(); if(p&&p.catch){p.catch(function(){});} }
+  v.addEventListener('error',function(){v.style.display='none';},true);
+  if(document.readyState!=='loading'){kick();}else{document.addEventListener('DOMContentLoaded',kick);}
+  ['touchstart','click','scroll'].forEach(function(e){
+    document.addEventListener(e,function h(){ if(v.paused) kick(); if(!v.paused) document.removeEventListener(e,h); },{passive:true});
+  });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden&&v.paused) kick(); });
+})();
+</script>
 </body>
 </html>
