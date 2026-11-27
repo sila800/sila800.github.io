@@ -16,21 +16,19 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
     font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif; color:var(--ink); line-height:1.85;
-    background:
-      radial-gradient(1000px 520px at 88% -6%, rgba(46,107,92,.14), transparent 60%),
-      radial-gradient(760px 460px at 4% 16%, rgba(185,138,47,.10), transparent 60%),
-      radial-gradient(900px 640px at 50% 112%, rgba(46,107,92,.10), transparent 60%),
-      var(--paper);
+    background-color:var(--paper);
+    background-image:url('bg.jpg');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
     background-attachment:fixed;
     position:relative;
   }
-  body::before, body::after{
-    content:''; position:fixed; z-index:-1; width:640px; height:120px; opacity:.055; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='120'%3E%3Crect width='640' height='120' rx='12' fill='%23221c1e'/%3E%3Cg fill='%23f7f4ef'%3E%3Crect x='12' y='10' width='16' height='14' rx='3'/%3E%3Crect x='52' y='10' width='16' height='14' rx='3'/%3E%3Crect x='92' y='10' width='16' height='14' rx='3'/%3E%3Crect x='132' y='10' width='16' height='14' rx='3'/%3E%3Crect x='172' y='10' width='16' height='14' rx='3'/%3E%3Crect x='212' y='10' width='16' height='14' rx='3'/%3E%3Crect x='252' y='10' width='16' height='14' rx='3'/%3E%3Crect x='292' y='10' width='16' height='14' rx='3'/%3E%3Crect x='332' y='10' width='16' height='14' rx='3'/%3E%3Crect x='372' y='10' width='16' height='14' rx='3'/%3E%3Crect x='412' y='10' width='16' height='14' rx='3'/%3E%3Crect x='452' y='10' width='16' height='14' rx='3'/%3E%3Crect x='492' y='10' width='16' height='14' rx='3'/%3E%3Crect x='532' y='10' width='16' height='14' rx='3'/%3E%3Crect x='572' y='10' width='16' height='14' rx='3'/%3E%3Crect x='612' y='10' width='16' height='14' rx='3'/%3E%3Crect x='12' y='96' width='16' height='14' rx='3'/%3E%3Crect x='52' y='96' width='16' height='14' rx='3'/%3E%3Crect x='92' y='96' width='16' height='14' rx='3'/%3E%3Crect x='132' y='96' width='16' height='14' rx='3'/%3E%3Crect x='172' y='96' width='16' height='14' rx='3'/%3E%3Crect x='212' y='96' width='16' height='14' rx='3'/%3E%3Crect x='252' y='96' width='16' height='14' rx='3'/%3E%3Crect x='292' y='96' width='16' height='14' rx='3'/%3E%3Crect x='332' y='96' width='16' height='14' rx='3'/%3E%3Crect x='372' y='96' width='16' height='14' rx='3'/%3E%3Crect x='412' y='96' width='16' height='14' rx='3'/%3E%3Crect x='452' y='96' width='16' height='14' rx='3'/%3E%3Crect x='492' y='96' width='16' height='14' rx='3'/%3E%3Crect x='532' y='96' width='16' height='14' rx='3'/%3E%3Crect x='572' y='96' width='16' height='14' rx='3'/%3E%3Crect x='612' y='96' width='16' height='14' rx='3'/%3E%3C/g%3E%3Cg stroke='%23f7f4ef' stroke-width='2'%3E%3Cline x1='80' y1='32' x2='80' y2='88'/%3E%3Cline x1='160' y1='32' x2='160' y2='88'/%3E%3Cline x1='240' y1='32' x2='240' y2='88'/%3E%3Cline x1='320' y1='32' x2='320' y2='88'/%3E%3Cline x1='400' y1='32' x2='400' y2='88'/%3E%3Cline x1='480' y1='32' x2='480' y2='88'/%3E%3Cline x1='560' y1='32' x2='560' y2='88'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-size:contain;
+  .bgvid{position:fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;}
+  body::before{
+    content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:rgba(247,244,239,.30);
   }
-  body::before{ top:6%; inset-inline-start:-220px; transform:rotate(-16deg); }
-  body::after{ bottom:5%; inset-inline-end:-230px; transform:rotate(13deg); }
   .wrap{max-width:960px; margin:0 auto; padding:0 22px;}
   section{padding:40px 0;}
   .hero{padding-top:64px; text-align:center;}
@@ -91,6 +89,7 @@
 </style>
 </head>
 <body>
+<video class="bgvid" autoplay muted loop playsinline poster="bg.jpg" aria-hidden="true"><source src="bg.mp4" type="video/mp4"></video>
 
 <section class="hero wrap">
   <div class="badge">٥ أنواع محتوى في خدمة واحدة</div>
@@ -202,7 +201,7 @@
     <p>ابعت الفكرة أو مثال للمحتوى اللي عاجبك على واتساب، وهيجيلك رد بالتفاصيل والسعر ومدة التنفيذ.</p>
     <a class="cta wa" href="https://wa.me/201007481079" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12c0 1.59.42 3.14 1.21 4.51L3 21l4.63-1.18A8.96 8.96 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9Z" stroke="white" stroke-width="1.8"/><path d="M8.8 9.2c.3 2.4 3.6 5.7 6 6l1.4-1.4c.3-.3.7-.3 1 0l1.1.9c.4.3.4.8.1 1.1-.9 1-2.1 1.3-3.3.9-2.7-.8-6-4.1-6.8-6.8-.4-1.2-.1-2.4.9-3.3.3-.3.8-.3 1.1.1l.9 1.1c.3.3.3.7 0 1L8.8 9.2Z" fill="white"/></svg>
-      كلميني على واتساب
+      تواصل عبر الواتساب
     </a>
     <div class="num-line">0100 748 1079</div>
     <div class="note" style="text-align:start">الفيديوهات بتوصلك جاهزة للنشر، ومعاها تنبيه في الحالات اللي المنصة بتطلب فيها علامة «محتوى ذكاء اصطناعي»، زي فيسبوك مع الفيديوهات الواقعية.</div>
